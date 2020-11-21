@@ -1,0 +1,22 @@
+---
+    - name: create jenkins directory beforehand
+      file: path={{ jenkins_local }} state=directory owner={{uid}} mode=0755
+
+    - name: build a local jenkins docker container
+      shell: |
+        [ -d {{jenkins_local}} ] || { mkdir {{jenkins_local}}; } 
+        rm -rf {{sysconfig}} 
+        touch {{sysconfig}}
+        docker build -t {{image}} /tmp/works/. > {{log}}
+        echo "DONE!" >> {{log}}
+      args:
+        warn: no
+
+    - name: insert firewalld rule
+      firewalld: port={{port}}/tcp permanent=true state=enabled immediate=yes
+
+    - name: run jenkins docker as daemon
+      shell: |
+        docker run --restart=always -u {{uid}} -e JENKINS_PASSWORD={{password}} -p {{port}}:{{sport}} -p 50000:50000 -v {{sock}}:{{sock}}:z -v {{docker}}:{{docker}} -v {{sysconfig}}:{{sysconfig}}:z -v {{jenkins_local}}:{{jenkins_home}}:z  -d {{image}}
+      args:
+        warn: no

@@ -1,0 +1,79 @@
+---
+# Example Playbook
+- name: Compute Engine Instance Examples
+  gather_facts: no
+  hosts: localhost
+  tasks:
+    # Basic provisioning example.  Create multiple centos 7.5 instances
+    - name: create multiple instances
+      gce:
+        instance_names: "{{ vms | join(',') }}"
+        zone: "{{ gce_zone }}"
+        # machine_type: n1-standard-1
+        machine_type: "{{mtype}}"
+        image: centos-7
+        # external_projects: ubuntu-os-cloud
+        # image_family: ubuntu-1804-lts
+        state: present
+        tags:
+          - foo
+          - bar
+        service_account_email: "{{ service_account_email }}"
+        credentials_file: "{{ credentials_file }}"
+        project_id: "{{ project_id }}"
+        metadata : '{ "startup-script" : "yum update" }'
+        persistent_boot_disk: yes
+        disk_size: 20
+      register: gce
+
+    - name: Save host data
+      add_host:
+        hostname: "{{ item.public_ip }}"
+        groupname: gce_instances_ips
+      with_items: "{{ gce.instance_data }}"
+
+    - name: set ip fact
+      set_fact:
+        ip: "{{ item.public_ip }}"
+      with_items: "{{ gce.instance_data }}"
+
+    - name: Wait for SSH for instances
+      wait_for:
+        delay: 1
+        host: "{{ item.public_ip }}"
+        port: 22
+        state: started
+        timeout: 30
+      with_items: "{{ gce.instance_data }}"
+
+    - name: Display the instances info
+      debug:
+        msg: "{{ item }}"
+      loop: "{{ gce.instance_data }}"
+
+    - name: create the ssh config file
+      file:
+        path: "{{config}}"
+        mode: 0644
+        state: touch
+
+    - name: Insert vms to ssh config
+      blockinfile:
+        dest: "{{ config }}"
+        marker: "# {mark} {{ item.0 }} ansible"
+        block: |
+          Host {{ item.0 }}
+          User {{ ssh_user }}
+          StrictHostKeyChecking no
+          IdentityFile {{ ssh_key }} 
+          Hostname {{ item.1.public_ip }}
+          Port 22
+      with_together:
+        - "{{ vms }}"
+        - "{{ gce.instance_data }}"
+
+    - name: check ssh connection
+      script: "{{tester}} {{item}} {{log}}"
+      with_items: "{{ vms }}"
+
+

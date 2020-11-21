@@ -1,0 +1,32 @@
+FROM openshift/jenkins-2-centos7
+
+USER root
+
+RUN echo "{{ip}}" > /opt/hostip
+RUN yum install -y sudo
+RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN echo "default ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN echo "default:!!:17936::::::" >> /etc/shadow
+RUN yum install -y epel-release
+RUN yum install -y docker-client
+RUN yum install -y ansible
+RUN yum install -y python-pip
+RUN yum install -y net-tools iproute ssmtp
+RUN pip install -U pip
+RUN pip install pyopenssl
+RUN pip install apache-libcloud
+RUN pip uninstall -y cryptography
+RUN pip install cryptography
+RUN [ -d /home/jenkins ] || mkdir /home/jenkins
+RUN echo "docker='sudo docker'" > /home/jenkins/.bashrc
+RUN perl -pi -e 's/mailhub=mail/mailhub=172.17.0.1/' /etc/ssmtp/ssmtp.conf
+RUN perl -pi -e 's/[#]?\s*FromLineOverride=(.*?)/FromLineOverride=$1/' /etc/ssmtp/ssmtp.conf
+RUN wget https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip
+RUN unzip chromedriver_linux64.zip
+RUN mv chromedriver /home/jenkins
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+RUN yum install -y google-chrome-stable_current_x86_64.rpm
+
+USER jenkins
+
+EXPOSE 8080

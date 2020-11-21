@@ -1,0 +1,5 @@
+# run it
+- import_playbook: vm/create-vms.yml
+- import_playbook: preload/main.yml
+- import_playbook: tools/main.yml
+- import_playbook: servian/main.yml

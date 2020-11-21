@@ -1,0 +1,34 @@
+---
+- name: Compute Engine Instance Examples
+  gather_facts: no
+  hosts: vm
+  become: yes
+  tasks:
+    - name: install ansible 
+      shell: |
+        echo "install ansible"
+        yum -y install epel-release
+        yum -y install ansible
+
+    - name: install and enable docker
+      shell: |
+        echo "install docker"
+        yum install -y yum-utils device-mapper-persistent-data lvm2
+        yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+        yum -y install docker-ce
+        usermod -aG docker {{ssh_user}}
+        systemctl enable docker.service
+        systemctl start docker.service
+
+        # install docker compose 
+        curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
+        chmod +x /usr/bin/docker-compose
+
+    - name: install golang
+      shell: |
+        yum install -y git
+        yum install -y mlocate
+        rpm --import https://mirror.go-repo.io/centos/RPM-GPG-KEY-GO-REPO
+        curl -s https://mirror.go-repo.io/centos/go-repo.repo | sudo tee /etc/yum.repos.d/go-repo.repo
+        yum install -y golang
+        go version

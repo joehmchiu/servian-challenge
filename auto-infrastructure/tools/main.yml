@@ -1,0 +1,27 @@
+---
+- name: Compute Engine Instance Examples
+  gather_facts: no
+  hosts: vm
+  become: yes
+  tasks:
+    - name: copy work files across
+      copy:
+        src: "{{root}}/works"
+        dest: /tmp
+
+    - name: copy work files across
+      template:
+        src: "{{root}}/works/Dockerfile.j2"
+        dest: "{{tmpdir}}/Dockerfile"
+
+    - name: install postgres db
+      shell: |
+        echo "hello world"
+        cd /tmp/works
+        docker-compose -f postgres-compose.yml up -d
+
+    - name: create and run jenkins 
+      include: jenkins-playbook.yml
+
+
+
