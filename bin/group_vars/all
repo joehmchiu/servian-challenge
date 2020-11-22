@@ -1,0 +1,37 @@
+---
+# vars for gcp
+
+root: "{{playbook_dir}}"
+vms:
+  - servian
+mtype: "n1-standard-2"
+ds: 12
+gce_zone: australia-southeast1-b
+path: "/opt/vars"
+sa: "servian-2020"
+project_id: "gcp-servian"
+service_account_email: "{{sa}}@{{project_id}}.iam.gserviceaccount.com"
+credentials_file: "{{path}}/{{sa}}.json"
+config: "/root/.ssh/config"
+ssh_user: "gcp"
+ssh_key: "{{path}}/foo"
+ip: nah
+
+tester: "{{root}}/ssh-tester.sh"
+# docker
+jenkins_home: /var/lib/jenkins
+jenkins_local: /opt/jenkins
+image: servianjenkins
+password: foobar
+sock: /var/run/docker.sock
+docker: /usr/bin/docker
+sysconfig: /etc/sysconfig/docker
+uid: 1000
+port: 8080
+sport: 8080
+log: /tmp/foo.log
+
+# servian
+tmpdir: /tmp/works
+gobin: /root/go/bin
+godep: /home/gcp/go/bin/dep
