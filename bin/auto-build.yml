@@ -23,6 +23,8 @@
     - name: run TechChallengeApp
       shell: |
         cd "{{tmpdir}}/TechChallengeApp/dist/"
+        kill -9 $(lsof -i :3000 | awk '{print $2}' | tail -n +2)
+        kill -9 $(lsof -i :3000 | awk '{print $2}' | tail -n +2)
         kill -9 $(ps -ef | grep "TechChallengeApp serve" | grep -v grep | awk '{print $2}')
         perl -pi -e 's/localhost/0.0.0.0/g' conf.toml
         ./TechChallengeApp updatedb -s
