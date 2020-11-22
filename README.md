@@ -40,7 +40,7 @@ This task is able to finish the servian challenge by 95% automation process whic
 
 ## TODO
 - debug and troubleshooting the app.
-- fix the bugs.
+- fix the bugs if exist.
 - make swagger up and run.
 - use an elegant domain name.
 - 100% automation.
