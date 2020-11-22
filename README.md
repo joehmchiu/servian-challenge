@@ -35,7 +35,7 @@ This task is able to finish the challenge by 95% automation process includes aut
 ![Installed case sample](https://github.com/joehmchiu/servian-challenge/blob/main/images/app-dump.PNG?raw=true)
 - Right after deployed the application, it will start to testing the API including unit test, load testing performance test and integration test, for example. 
 ![An example for this showcase](https://github.com/joehmchiu/servian-challenge/blob/main/images/jenkins-demo-app-dump.PNG?raw=true)
-- Once complete the test, the root.go code version will be increased 1 and pushed to the forked repository to complete the CI / CD process.
+- Once complete the test, the root.go code version will be increased by 1 and pushed into the forked repository to complete the showcase.
 ![The stages for this case](https://github.com/joehmchiu/servian-challenge/blob/main/images/jenkins-demo.PNG?raw=true)
 
 ## TODO
