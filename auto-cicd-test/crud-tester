@@ -40,7 +40,7 @@ def test_update(String id, String d) {
     return res
 }
 
-stage "Testing Create"
+stage "Skipping Create"
 node() {
   script {
 /*
@@ -66,10 +66,10 @@ node() {
     echo data.result
   }
 }
-stage "Skipped Update"
+stage "Skipping Update"
 node() {
   script {
-    echo "Update skipped"
+    echo "Update testing skipped"
 /*
     response = test_update(id, d2)
     echo response
