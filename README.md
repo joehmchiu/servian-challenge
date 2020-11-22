@@ -33,7 +33,7 @@ This task is able to finish the servian challenge by 95% automation process whic
 - The stages for this case include "Start Task", "Update Change", "Preload for Deployment", "Init Working Env", "Deploy Application", "Preload for Testing", "Skipping Create", "Testing Read", "Skipping Update", "Testing Delete" and "Commit Version Change".
 - Any commitments submitted to the forked repository the Jenkins pipeline will trigger the deployment process to install the application.
 ![Installed case sample](https://github.com/joehmchiu/servian-challenge/blob/main/images/app-dump.PNG?raw=true)
-- Right after deployed the application, it will start to testing the API including unit test, load testing performance test and integration test, for example. 
+- Right after deployed the application, it will start to testing the API which can include unit test, load testing performance test and integration test, for example. 
 ![An example for this showcase](https://github.com/joehmchiu/servian-challenge/blob/main/images/jenkins-demo-app-dump.PNG?raw=true)
 - Once complete the test, the root.go code version will be increased by 1 and pushed into the forked repository to complete the showcase.
 ![The stages for this case](https://github.com/joehmchiu/servian-challenge/blob/main/images/jenkins-demo.PNG?raw=true)
