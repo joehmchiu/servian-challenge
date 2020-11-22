@@ -36,4 +36,4 @@ This task is able to finish the task by 95% automation process includes automati
 - issue found when try to create (post) the json to create a message:
   post: '{"title":"","priority":1000,"completed":false,"id":0,"Title":"foo"}'
   return: {'content': b"invalid character 'i' in literal true (expecting 'r')\n"}
-- swagger cannot not setup and run, it returns 404 error.
+- swagger does not work, it returns 404 error.
