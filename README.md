@@ -4,14 +4,16 @@ This task is able to finish the task by 95% automation process includes automati
 
 ## Summary
 - this task is built for the Servian TechChallengeApp.
-- automation infrastructure, application installations and CI / CD solutions
+- the automation tasks include automation infrastructure, application installations and CI / CD processes and tests.
   and tests.
-- the automation is working and running.
-- the app run by go, it's partially working and provides limited functions.
+- the automation processes for this sample are tested and running.
+- the app run by golang, however it's partially working and provides limited functions in my experiment.
 - the infrastructure codes for creating VM and connection to GCP.
-- a TechChallengeApp application running at port 3000.
-- a testing Jenkins site for CI / CD test.
-- Ansible playbook for the automation IaC.
+- a TechChallengeApp application running on port 3000.
+- docker postgrs db running on port 5432
+- docker Jenkins running on port 8080
+- a testing Jenkins site is available for showing CI / CD test.
+- Ansible playbook is the main IaC for the automation.
 
 ## Pre-Requisite
 - GCP account for IaC
@@ -44,7 +46,7 @@ This task is able to finish the task by 95% automation process includes automati
 - 100% automation.
 
 ## Issue
-- issue found when try to create (post) the json to create a message:
+- issue found when try to create (post method) a message:
   post: '{"title":"","priority":1000,"completed":false,"id":0,"Title":"foo"}'
   return: {'content': b"invalid character 'i' in literal true (expecting 'r')\n"}
 - swagger does not work, it returns 404 error.
@@ -52,6 +54,6 @@ This task is able to finish the task by 95% automation process includes automati
 ## Links
 - task documentation github:  https://github.com/joehmchiu/servian-challenge
 - forked application github: https://github.com/joehmchiu/servian-challenge
-- Jenkins demo site: http://35.244.91.198:8080/ (admin/foobar, feel free to test it.)
+- Jenkins demo site: http://35.244.91.198:8080/ (username and password: admin/foobar, feel free to test it.)
 - application URL: http://35.244.91.198:3000/ 
 
