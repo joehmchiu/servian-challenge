@@ -1,6 +1,6 @@
 # servian-challenge
 ## 95% Automation
-This task is able to finish the task by 95% automation process includes automation infrastructure, application installations, deployment and CI / CD solutions and tests.
+This task is able to finish the challenge by 95% automation process includes automation infrastructure, application installations, deployment, CI / CD solutions, tests and version control.
 
 ## Summary
 - this task is built for the Servian TechChallengeApp.
@@ -17,7 +17,7 @@ This task is able to finish the task by 95% automation process includes automati
 
 ## Pre-Requisite
 - GCP account for IaC
-- Centos 7 with Ansible installed
+- Centos 7
 - Github for Jenkins integration
 - gcloud (optional)
 
@@ -41,12 +41,12 @@ This task is able to finish the task by 95% automation process includes automati
 
 ## TODO
 - debug and troubleshooting the app.
-- fix the bugs for running.
+- fix the bugs.
 - make swagger up and run.
 - use an elegant domain name.
 - 100% automation.
 
-## Issue
+## Issues
 - issue found when try to create (post method) a message:
   post: '{"title":"","priority":1000,"completed":false,"id":0,"Title":"foo"}'
   return: {'content': b"invalid character 'i' in literal true (expecting 'r')\n"}
