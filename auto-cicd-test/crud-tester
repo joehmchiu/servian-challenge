@@ -57,8 +57,9 @@ node() {
     response = test_run('read', '')
     echo response
     data = from_json(response)
-    all = from_json(response) 
-    echo all[0].id
+    // echo all[0].id
+    def json = JsonOutput.toJson(data)
+    echo JsonOutput.prettyPrint(json)
     check(data.status)
     echo data.result
   }
