@@ -1,0 +1,29 @@
+---
+- hosts: test
+  become: yes
+  tasks:
+    - name: update from github
+      shell: |
+        [ -d {{tmpdir}} ] || sudo mkdir -p {{tmpdir}}
+        [ -d {{gobin}} ] || sudo mkdir -p {{gobin}}
+        [ -d {{godep}} ] || { sudo mkdir -p {{godep}}; sudo chmod 755 {{godep}}; }
+
+        cd {{tmpdir}}
+        sudo git clone https://github.com/joehmchiu/TechChallengeApp.git
+        cd TechChallengeApp
+        curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+        go get -d github.com/Servian/TechChallengeApp
+        ./build.sh
+
+    - name: update TechChallengeApp
+      shell: |
+        docker build . -t servian/techchallengeapp:latest
+        docker pull servian/techchallengeapp:latest
+
+    - name: run TechChallengeApp
+      shell: |
+        cd "{{tmpdir}}/TechChallengeApp/dist/"
+        kill -9 $(ps -ef | grep "TechChallengeApp serve" | grep -v grep | awk '{print $2}')
+        perl -pi -e 's/localhost/0.0.0.0/g' conf.toml
+        ./TechChallengeApp updatedb -s
+        nohup ./TechChallengeApp serve &

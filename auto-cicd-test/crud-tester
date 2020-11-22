@@ -1,0 +1,87 @@
+import hudson.model.*
+import hudson.EnvVars
+import groovy.json.JsonSlurperClassic
+import groovy.json.JsonBuilder
+import groovy.json.JsonOutput
+import java.net.URL
+
+id   = '5fb1d03d9837e71225422290'
+data = '{"title":"","priority":1000,"completed":false,"id":0,"Title":"foo"}'
+d2   = '{"title":"","priority":1000,"completed":false,"id":0,"Title":"foo bar"}'
+
+ok = '\u2705'
+no = '\u274C'
+
+def from_json(String res) {
+    final data = readJSON text: res
+    return data
+}
+
+def check(int s) {
+    if (s =~ /2\d\d/) {
+        echo "${ok} test succeed"
+    } else {
+        echo "${nok} test failed"
+        sh "exit 1"
+    }
+}
+
+def run(String cmd) {
+    final String res = sh(script: "${cmd}", returnStdout: true).trim()
+    return res
+}
+
+def test_run(String a, String d) {
+    res = run("sudo crud -a ${a} -d '${d}'")
+    return res
+}
+
+def test_update(String id, String d) {
+    res = run("sudo crud -a update -i ${id} -d '${d}'")
+    return res
+}
+
+stage "Testing Create"
+node() {
+  script {
+    response = test_run('create', data)
+    data = from_json(response)
+    check(data.status)
+    id = data.id
+    echo data.result
+  }
+}
+stage "Testing Read"
+node() {
+  script {
+    response = test_run('read', '')
+    echo response
+    data = from_json(response)
+    all = from_json(response)
+    check(data.status)
+    echo data.result
+  }
+}
+stage "Skipped Update"
+node() {
+  script {
+    echo "Update skipped"
+/*
+    response = test_update(id, d2)
+    echo response
+    data = from_json(response)
+    check(data.status)
+    echo data.result
+*/
+  }
+}
+stage "Testing Delete"
+node() {
+  script {
+    response = test_run('delete', 15)
+    echo response
+    data = from_json(response)
+    check(data.status)
+    echo data.result
+  }
+}
