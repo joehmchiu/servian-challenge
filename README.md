@@ -18,7 +18,7 @@ This task is able to finish the servian challenge by 95% automation process whic
 - GCP account for IaC
 - Centos 7
 - Github for Jenkins integration
-- gcloud (optional)
+- gcloud enabled (optional)
 
 ## RUN
 - git clone https://github.com/joehmchiu/servian-challenge
