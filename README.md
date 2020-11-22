@@ -1,6 +1,6 @@
 # servian-challenge
 ## 95% Automation
-This task is able to finish the challenge by 95% automation process includes automation infrastructure, application installations, deployment, CI / CD solutions, tests and version control.
+This task is able to finish the servian challenge by 95% automation process which includes automation infrastructure, application installations, deployment, CI / CD solutions, tests and version control.
 
 ## Summary
 - this task is built for the Servian TechChallengeApp.
