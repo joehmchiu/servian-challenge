@@ -16,7 +16,7 @@ This task is able to finish the servian challenge by 95% automation process whic
 
 ## Pre-Requisite
 - GCP account for IaC
-- Centos 7
+- Ansible enabled environment
 - Github for Jenkins integration
 - gcloud enabled (optional)
 
