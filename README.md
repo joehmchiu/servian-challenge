@@ -18,6 +18,7 @@ This task is able to finish the task by 95% automation process includes automati
 ## Pre-Requisite
 - GCP account for IaC
 - Centos 7 with Ansible installed
+- Github for Jenkins integration
 - gcloud (optional)
 
 ## RUN
@@ -26,7 +27,7 @@ This task is able to finish the task by 95% automation process includes automati
 - ansible-playbook -i hosts playbook.yml
 - Jenkins: http://35.244.91.198:8080/
 - login with admin/foobar
-- build the demo item to see the CI / CD process
+- build ServianDemo to see the CI / CD process
 
 ## Showcase
 - This showcase will be presenting to the customers about how will be the application integration and deployment done by Jenkins CI / CD and raise the version tag commited to the forked repository if the case succeeds. The application is forked from Servian github - https://github.com/servian/TechChallengeApp
@@ -54,6 +55,6 @@ This task is able to finish the task by 95% automation process includes automati
 ## Links
 - task documentation github:  https://github.com/joehmchiu/servian-challenge
 - forked application github: https://github.com/joehmchiu/servian-challenge
-- Jenkins demo site: http://35.244.91.198:8080/ (username and password: admin/foobar, feel free to test it.)
+- Jenkins demo site: http://35.244.91.198:8080/ 
 - application URL: http://35.244.91.198:3000/ 
 
