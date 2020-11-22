@@ -29,7 +29,7 @@ This task is able to finish the task by 95% automation process includes automati
 ## Showcase
 - This showcase will be presenting to the customers about how will be the application integration and deployment done by Jenkins CI / CD and raise the version tag commited to the forked repository if the case succeeds. The application is forked from Servian github - https://github.com/servian/TechChallengeApp
 - The stages for this case include "Start Task", "Update Change", "Preload for Deployment", "Init Working Env", "Deploy Application", "Preload for Testing", "Skipping Create", "Testing Read", "Skipping Update", "Testing Delete" and "Commit Version Change".
-![The stages for this case](https://github.com/joehmchiu/servian-challenge/blob/main/images/jenkins-demo.PNG?raw=true | width=250)
+![The stages for this case](https://github.com/joehmchiu/servian-challenge/blob/main/images/jenkins-demo.PNG?raw=true) { width:150px; height:100px; } img[src~="bordered"] {   border: 1px solid black; }
 - Any commitments submitted to the forked repository the Jenkins pipeline will trigger the deployment process to install the application.
 ![Installed case sample](https://github.com/joehmchiu/servian-challenge/blob/main/images/app-dump.PNG?raw=true | width=250)
 - Right after deployed the application, it will start to testing the API including unit test, load testing performance test and integration test, for example. 
