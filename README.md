@@ -26,10 +26,21 @@ This task is able to finish the task by 95% automation process includes automati
 - login with admin/foobar
 - build the demo item to see the CI / CD process
 
+## Showcase
+- This showcase will be presenting to the customers about how will be the application integration and deployment done by Jenkins CI / CD and raise the version tag commited to the forked repository if the case succeeds. The application is forked from Servian github - https://github.com/servian/TechChallengeApp
+- The stages for this case include "Start Task", "Update Change", "Preload for Deployment", "Init Working Env", "Deploy Application", "Preload for Testing", "Skipping Create", "Testing Read", "Skipping Update", "Testing Delete" and "Commit Version Change".
+![The stages for this case](https://github.com/joehmchiu/servian-challenge/blob/main/images/jenkins-demo.PNG?raw=true)
+- Any commitments submitted to the forked repository the Jenkins pipeline will trigger the deployment process to install the application.
+![Installed case sample](https://github.com/joehmchiu/servian-challenge/blob/main/images/app-dump.PNG?raw=true)
+- Right after deployed the application, it will start to testing the API including unit test, load testing performance test and integration test, for example. 
+![An example for this showcase](https://github.com/joehmchiu/servian-challenge/blob/main/images/jenkins-demo-app-dump.PNG?raw=true)
+- Once complete the test, the root.go code version will be increased 1 and pushed to the forked repository to complete the CI / CD process.
+
 ## TODO
 - debug and troubleshooting the app.
 - fix the bugs for running.
 - make swagger up and run.
+- use an elegant domain name.
 - 100% automation.
 
 ## Issue
@@ -37,3 +48,10 @@ This task is able to finish the task by 95% automation process includes automati
   post: '{"title":"","priority":1000,"completed":false,"id":0,"Title":"foo"}'
   return: {'content': b"invalid character 'i' in literal true (expecting 'r')\n"}
 - swagger does not work, it returns 404 error.
+
+## Links
+- task documentation github:  https://github.com/joehmchiu/servian-challenge
+- forked application github: https://github.com/joehmchiu/servian-challenge
+- Jenkins demo site: http://35.244.91.198:8080/ (admin/foobar, feel free to test it.)
+- application URL: http://35.244.91.198:3000/ 
+
