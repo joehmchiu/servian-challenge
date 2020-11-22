@@ -5,7 +5,7 @@ import groovy.json.JsonBuilder
 import groovy.json.JsonOutput
 import java.net.URL
 
-id   = '5fb1d03d9837e71225422290'
+id   = '15'
 data = '{"title":"","priority":1000,"completed":false,"id":0,"Title":"foo"}'
 d2   = '{"title":"","priority":1000,"completed":false,"id":0,"Title":"foo bar"}'
 
@@ -57,7 +57,8 @@ node() {
     response = test_run('read', '')
     echo response
     data = from_json(response)
-    all = from_json(response)
+    all = from_json(response) 
+    echo all[0].id
     check(data.status)
     echo data.result
   }
@@ -78,7 +79,7 @@ node() {
 stage "Testing Delete"
 node() {
   script {
-    response = test_run('delete', 15)
+    response = test_run('delete', id)
     echo response
     data = from_json(response)
     check(data.status)
