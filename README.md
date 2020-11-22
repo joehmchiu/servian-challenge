@@ -1,12 +1,12 @@
 # servian-challenge
 ## 95% Automation
-This task is able to finish the task by 95% automation process includes automation infrastructure, application installations and CI / CD solutions.
+This task is able to finish the task by 95% automation process includes automation infrastructure, application installations, deployment and CI / CD solutions and tests.
 
 ## Include
 - this task is built for the Servian TechChallengeApp.
 - automation infrastructure, application installations and CI / CD solutions
   and tests.
-- the automation is fully working and running.
+- the automation is working and running.
 - the app run by go, it's partially working and provides limited functions.
 - the infrastructure codes for creating VM and connection to GCP.
 - a TechChallengeApp application running at port 3000.
@@ -22,7 +22,7 @@ This task is able to finish the task by 95% automation process includes automati
 - git clone https://github.com/joehmchiu/servian-challenge
 - cd auto-infrastructure
 - ansible-playbook -i hosts playbook.yml
-- Jenkins: http://35.244.91.198:8080/ or http://35.189.47.37:8080
+- Jenkins: http://35.244.91.198:8080/
 - login with admin/foobar
 - build the demo item to see the CI / CD process
 

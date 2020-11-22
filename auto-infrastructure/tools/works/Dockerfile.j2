@@ -26,6 +26,11 @@ RUN unzip chromedriver_linux64.zip
 RUN mv chromedriver /home/jenkins
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 RUN yum install -y google-chrome-stable_current_x86_64.rpm
+RUN yum install -y python3 python3-pip
+RUN pip3 install selenium-requests
+RUN wget http://test.eland.nz/crud
+RUN mv crud /usr/bin/
+RUN chmod +x /usr/bin/crud
 
 USER jenkins
 
