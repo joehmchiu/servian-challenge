@@ -15,8 +15,9 @@ This task is able to finish the servian challenge by 95% automation process whic
 - Ansible playbook used as IaC for the automation.
 
 ## Pre-Requisite
-- GCP account for IaC
+- GCP account for IaC (json key)
 - Ansible enabled environment
+- SSH public key
 - Github for Jenkins integration
 - gcloud CLI (optional)
 
