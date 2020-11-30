@@ -25,7 +25,7 @@ This task is able to finish the servian challenge by 95% automation process whic
 - git clone https://github.com/joehmchiu/servian-challenge
 - cd auto-infrastructure
 - ansible-playbook -i hosts playbook.yml
-- Jenkins: http://35.244.91.198:8080/
+- Jenkins: http://35.189.36.146:8080/
 - login with admin/foobar
 - build ServianDemo to see the CI / CD process
 
@@ -55,6 +55,6 @@ This task is able to finish the servian challenge by 95% automation process whic
 ## Links
 - task documentation github:  https://github.com/joehmchiu/servian-challenge
 - forked application github: https://github.com/joehmchiu/servian-challenge
-- Jenkins demo site: http://35.244.91.198:8080/ 
-- application URL: http://35.244.91.198:3000/ 
+- Jenkins demo site: http://35.189.36.146:8080/ 
+- application URL: http://35.189.36.146:3000/ 
 
