@@ -53,7 +53,7 @@ node() {
     echo "Skipped Create testing"
   }
 }
-stage "Testing Read"
+stage "Testing Foo Read"
 node() {
   script {
     response = test_run('read', '')
